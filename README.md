@@ -42,4 +42,4 @@ your bastion IP with dash replaced dot. And adress to web after that 'https://0-
 #IP for bastionhost and someinternalhost
 
 bastion_IP = 178.154.222.118
-someinternalhosp_IP = 10.128.0.23
+someinternalhost_IP = 10.128.0.23
