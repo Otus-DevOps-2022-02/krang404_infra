@@ -49,7 +49,7 @@ your bastion IP with dash replaced dot. And adress to web after that 'https://0-
 bastion_IP = 178.154.222.118
 someinternalhost_IP = 10.128.0.23
 testapp_IP = 51.250.72.207
-tesapp_port = 9292
+testapp_port = 9292
 
 ################################
 # Home Work № 4
