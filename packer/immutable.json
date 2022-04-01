@@ -1,0 +1,43 @@
+{
+    "builders": [
+        {
+            "type": "yandex",
+            "service_account_key_file": "{{user `service_account_key_file`}}",
+            "folder_id": "{{user `folder_id`}}",
+
+            "source_image_family": "ubuntu-1604-lts",
+            "image_name": "reddit-base-{{timestamp}}",
+            "image_family": "reddit-full",
+
+            "use_ipv4_nat": true,
+            "disk_type": "network-ssd",
+            "ssh_username": "ubuntu",
+            "platform_id": "standard-v1"
+
+        }
+    ],
+
+    "provisioners": [
+           {
+               "type": "shell",
+               "script": "files/install_all.sh",
+               "execute_command": "sudo {{.Path}}"
+           },
+           {
+                "type": "file",
+                "source": "files/puma.service",
+                "destination": "/home/ubuntu/puma.service"
+           },
+           {
+              "type": "shell",
+              "inline": [
+                "sudo git clone -b monolith https://github.com/express42/reddit.git /opt/reddit/",
+                "sudo cd /opt/reddit && bundle install",
+                "sudo mv /home/ubuntu/puma.service /etc/systemd/system/puma.service",
+                "sudo chmod 644 /etc/systemd/system/puma.service",
+                "sudo systemctl daemon-reload",
+                "sudo systemctl enable puma.service"
+                                        ]
+           }
+       ]
+}
