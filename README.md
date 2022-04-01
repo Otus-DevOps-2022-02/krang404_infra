@@ -47,8 +47,11 @@ your bastion IP with dash replaced dot. And adress to web after that 'https://0-
 #IP for bastionhost and someinternalhost
 
 bastion_IP = 178.154.222.118
+
 someinternalhost_IP = 10.128.0.23
+
 testapp_IP = 51.250.72.207
+
 testapp_port = 9292
 
 ################################
@@ -75,3 +78,12 @@ yc compute instance create \
   --metadata serial-port-enable=1 \
 
 File 'metadata.yaml' is cloud-config for cloud-init.
+
+################################
+# Home Work № 5
+################################
+
+Create image with Packer for Yandex Cloud in Fry and Bake strategy.
+
+1. In packer/ubuntu.json - Fry image
+2. In packer/immutable.json - Bake image
