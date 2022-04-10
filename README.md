@@ -87,3 +87,9 @@ Create image with Packer for Yandex Cloud in Fry and Bake strategy.
 
 1. In packer/ubuntu.json - Fry image
 2. In packer/immutable.json - Bake image
+
+################################
+# Home Work № 6
+################################
+
+Create VM with Terraform. File 'main.tf' has description of VM in Yandex Cloud. Count of VM's has contained in 'var.instance_count' Folder '/files' is place of scipts for provisioning VM. File 'lb.tf' creates a network load balancer for target group of VM's.
