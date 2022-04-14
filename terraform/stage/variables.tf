@@ -1,10 +1,12 @@
 variable "cloud_id" {
   description = "Cloud"
   type        = string
+  default     = "fakefakefakefake"
 }
 variable "folder_id" {
   description = "Folder"
   type        = string
+  default     = "fakefakefakefake"
 }
 variable "zone" {
   description = "Zone"
@@ -25,6 +27,7 @@ variable "subnet_id" {
 }
 variable "service_account_key_file" {
   description = "key.json"
+  default     = "key.json"
 }
 variable "instance_count" {
   description = "count var"
