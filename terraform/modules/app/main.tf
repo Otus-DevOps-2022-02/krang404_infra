@@ -1,25 +1,16 @@
-#terraform {
-#  required_providers {
-#    yandex = {
-#      source  = "yandex-cloud/yandex"
-#      version = "~> 0.35"
-#    }
-#  }
-#  required_version = ">= 1.00"
-#}
-
-provider "yandex" {
-  version = "~> 0.35"
-  #  token                    = var.ya_auth_token
-  cloud_id                 = var.cloud_id
-  folder_id                = var.folder_id
-  zone                     = var.zone
-  service_account_key_file = var.service_account_key_file
-}
+# terraform {
+#   required_providers {
+#     yandex = {
+#       source  = "yandex-cloud/yandex"
+#       version = "~> 0.35"
+#     }
+#   }
+#   required_version = ">= 1.00"
+# }
 
 resource "yandex_compute_instance" "app" {
-  count       = var.instance_count
-  name        = "reddit-app-${count.index}"
+  #count       = var.instance_count
+  name        = "reddit-app"
   platform_id = "standard-v1"
   zone        = var.zone
 
@@ -31,7 +22,7 @@ resource "yandex_compute_instance" "app" {
   boot_disk {
     initialize_params {
       # Указать id образа созданного в предыдущем домашем задании
-      image_id = var.image_id
+      image_id = var.app_disk_image
     }
   }
 
@@ -40,6 +31,7 @@ resource "yandex_compute_instance" "app" {
     subnet_id = var.subnet_id
     nat       = true
   }
+
 
   metadata = {
     ssh-keys = "ubuntu:${file(var.public_key_path)}"
@@ -53,13 +45,18 @@ resource "yandex_compute_instance" "app" {
     # путь до приватного ключа
     private_key = file(var.private_key_path)
   }
-
-  provisioner "file" {
-    source      = "files/puma.service"
-    destination = "/tmp/puma.service"
+  provisioner "local-exec" {
+    command = "echo DATABASE_URL=${var.database_addr}:27017 >> ../files/puma.env"
   }
-
+  provisioner "file" {
+    source      = "../files/puma.env"
+    destination = "/tmp/puma.env"
+  }
+  provisioner "file" {
+    source      = "../files/puma.service.tmpl"
+    destination = "/tmp/puma.service.tmpl"
+  }
   provisioner "remote-exec" {
-    script = "files/deploy.sh"
+    script = "../files/deploy.sh"
   }
 }

@@ -5,3 +5,4 @@ variables.json
 *.tfvars
 .terraform/
 variables.tf.backup
+*.tf.backup

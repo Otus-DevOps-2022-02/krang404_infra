@@ -93,3 +93,10 @@ Create image with Packer for Yandex Cloud in Fry and Bake strategy.
 ################################
 
 Create VM with Terraform. File 'main.tf' has description of VM in Yandex Cloud. Count of VM's has contained in 'var.instance_count' Folder '/files' is place of scipts for provisioning VM. File 'lb.tf' creates a network load balancer for target group of VM's.
+
+################################
+# Home Work № 7
+################################
+
+Create 2 modules for provisioning virtual machines 'app' and 'db'. Create 2 environments for provisioning (stage and prod).
+Module 'db' creates VM that contened database MongoDB. Because MongoDB is running on localhost (127.0.0.1), in provisioning section of the resource "db" make thread editing config file in '/etc/mongod.conf'. For module 'app' make depends of module 'db' through output variable 'internal_ip_address_db' in 'main.tf' of root level.
