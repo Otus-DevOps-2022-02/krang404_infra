@@ -11,11 +11,11 @@ variable "zone" {
 }
 variable "public_key_path" {
   description = "Path to the public key used for ssh access"
-  default     = "~/.ssh/appuser.pub"
+  default     = "~/.ssh/yc.pub"
 }
 variable "private_key_path" {
   description = "Path to the private key used for ssh access"
-  default     = "~/.ssh/appuser"
+  default     = "~/.ssh/yc"
 }
 variable "image_id" {
   description = "Disk image"
@@ -27,7 +27,7 @@ variable "subnet_id" {
 }
 variable "service_account_key_file" {
   description = "key.json"
-  default     = "key.json"
+  default     = "~/Otus/key.json"
 }
 variable "instance_count" {
   description = "count var"

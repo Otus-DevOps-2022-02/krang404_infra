@@ -1,18 +1,19 @@
-# terraform {
-#   required_providers {
-#     yandex = {
-#       source  = "yandex-cloud/yandex"
-#       version = "~> 0.35"
-#     }
-#   }
-#   required_version = ">= 1.00"
-# }
+terraform {
+  required_providers {
+    yandex = {
+      source  = "yandex-cloud/yandex"
+      version = "~> 0.35"
+    }
+  }
+  required_version = ">= 1.00"
+}
 
 resource "yandex_compute_instance" "app" {
   #count       = var.instance_count
-  name        = "reddit-app"
-  platform_id = "standard-v1"
-  zone        = var.zone
+  name = "reddit-app"
+  labels = {
+    tags = "reddit-app"
+  }
 
   resources {
     cores  = 2
