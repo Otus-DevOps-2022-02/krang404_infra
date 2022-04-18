@@ -100,3 +100,9 @@ Create VM with Terraform. File 'main.tf' has description of VM in Yandex Cloud. 
 
 Create 2 modules for provisioning virtual machines 'app' and 'db'. Create 2 environments for provisioning (stage and prod).
 Module 'db' creates VM that contened database MongoDB. Because MongoDB is running on localhost (127.0.0.1), in provisioning section of the resource "db" make thread editing config file in '/etc/mongod.conf'. For module 'app' make depends of module 'db' through output variable 'internal_ip_address_db' in 'main.tf' of root level.
+
+################################
+# Home Work № 8
+################################
+
+In this homework Ansible was install on local machine. Folder 'ansible' contains all config files for working with inventory. Inventory has performed in YAML and JSON format. Moreover, python-script 'dinventuse.py' works as dinamic inventory.
