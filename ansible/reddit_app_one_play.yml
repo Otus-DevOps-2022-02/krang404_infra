@@ -23,7 +23,7 @@
 
     - name: Add unit file for Puma
       become: true
-      ansible.builtin.copy:
+      copy:
         src: files/puma.service
         dest: /etc/systemd/system/puma.service
       tags: app-tag
