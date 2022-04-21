@@ -6,3 +6,4 @@ variables.json
 .terraform/
 variables.tf.backup
 *.tf.backup
+*.retry

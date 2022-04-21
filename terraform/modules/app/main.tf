@@ -1,22 +1,25 @@
-# terraform {
-#   required_providers {
-#     yandex = {
-#       source  = "yandex-cloud/yandex"
-#       version = "~> 0.35"
-#     }
-#   }
-#   required_version = ">= 1.00"
-# }
+terraform {
+  required_providers {
+    yandex = {
+      source  = "yandex-cloud/yandex"
+      version = "~> 0.35"
+    }
+  }
+  required_version = ">= 1.00"
+}
+
 
 resource "yandex_compute_instance" "app" {
   #count       = var.instance_count
-  name        = "reddit-app"
-  platform_id = "standard-v1"
-  zone        = var.zone
-
+  name                      = "reddit-app"
+  allow_stopping_for_update = true
+  labels = {
+    tags = "reddit-app"
+  }
   resources {
-    cores  = 2
-    memory = 2
+    core_fraction = 5
+    cores         = 2
+    memory        = 2
   }
 
   boot_disk {
@@ -32,31 +35,34 @@ resource "yandex_compute_instance" "app" {
     nat       = true
   }
 
+  scheduling_policy {
+    preemptible = true
+  }
 
   metadata = {
     ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }
-
-  connection {
-    type  = "ssh"
-    host  = self.network_interface.0.nat_ip_address
-    user  = "ubuntu"
-    agent = false
-    # путь до приватного ключа
-    private_key = file(var.private_key_path)
-  }
-  provisioner "local-exec" {
-    command = "echo DATABASE_URL=${var.database_addr}:27017 >> ../files/puma.env"
-  }
-  provisioner "file" {
-    source      = "../files/puma.env"
-    destination = "/tmp/puma.env"
-  }
-  provisioner "file" {
-    source      = "../files/puma.service.tmpl"
-    destination = "/tmp/puma.service.tmpl"
-  }
-  provisioner "remote-exec" {
-    script = "../files/deploy.sh"
-  }
+  #
+  # connection {
+  #   type  = "ssh"
+  #   host  = self.network_interface.0.nat_ip_address
+  #   user  = "ubuntu"
+  #   agent = false
+  #   # путь до приватного ключа
+  #   private_key = file(var.private_key_path)
+  # }
+  # provisioner "local-exec" {
+  #   command = "echo DATABASE_URL=${var.database_addr}:27017 >> ../files/puma.env"
+  # }
+  # provisioner "file" {
+  #   source      = "../files/puma.env"
+  #   destination = "/tmp/puma.env"
+  # }
+  # provisioner "file" {
+  #   source      = "../files/puma.service.tmpl"
+  #   destination = "/tmp/puma.service.tmpl"
+  # }
+  # provisioner "remote-exec" {
+  #   script = "../files/deploy.sh"
+  # }
 }

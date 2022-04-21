@@ -106,3 +106,15 @@ Module 'db' creates VM that contened database MongoDB. Because MongoDB is runnin
 ################################
 
 In this homework Ansible was install on local machine. Folder 'ansible' contains all config files for working with inventory. Inventory has performed in YAML and JSON format. Moreover, python-script 'dinventuse.py' works as dinamic inventory.
+
+################################
+# Home Work № 9
+################################
+
+In this homework was create playbooks for install MongoDB and deploy Monolith app in 3 variants:
+
+1. reddit_app_one_play.yml - is all scenario in one play
+2. reddit_app_multiple_play.yml - is scenario in multiple play
+3. site.yml is include 3 playbooks.
+
+Moreover in ansible config was including dinamic inventory module 'yc_compute'. That works localy in directory 'ansible'. Also packer image was recreating with playbooks 'packer_app.yml' and 'packer_db.yml'.
