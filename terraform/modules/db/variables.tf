@@ -14,7 +14,7 @@ variable "zone" {
 }
 variable "service_account_key_file" {
   description = "key.json"
-  default     = "key.json"
+  default     = "~/Otus/key.json"
 }
 variable "public_key_path" {
   description = "Path to the public key used for ssh access"
