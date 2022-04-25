@@ -27,10 +27,8 @@ jobs:
       run: |
         cd terraform/stage
         mv terraform.tfvars.example terraform.tfvars
-        terraform init
         cd ../prod
         mv terraform.tfvars.example terraform.tfvars
-        terraform init
         cd ../..
         terraform -chdir=terraform/stage validate
         terraform -chdir=terraform/prod validate
