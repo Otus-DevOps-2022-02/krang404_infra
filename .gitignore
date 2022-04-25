@@ -7,3 +7,4 @@ variables.json
 variables.tf.backup
 *.tf.backup
 *.retry
+ansible/roles/jdauphant.nginx/*
