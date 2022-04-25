@@ -1,3 +1,5 @@
+[![Run tests for OTUS homework](https://github.com/Otus-DevOps-2022-02/krang404_infra/actions/workflows/run-tests-2022-02.yml/badge.svg)](https://github.com/Otus-DevOps-2022-02/krang404_infra/actions/workflows/run-tests-2022-02.yml)
+
 # krang404_infra
 krang404 Infra repository
 
@@ -118,3 +120,11 @@ In this homework was create playbooks for install MongoDB and deploy Monolith ap
 3. site.yml is include 3 playbooks.
 
 Moreover in ansible config was including dinamic inventory module 'yc_compute'. That works localy in directory 'ansible'. Also packer image was recreating with playbooks 'packer_app.yml' and 'packer_db.yml'.
+
+################################
+# Home Work № 10
+################################
+
+In this homework was creating roles for install MongoDB and application Monolith. Moreover was installing role with ansible-galaxy.
+In addition in this homework was writing playbook for create users in servers 'db' and 'app'. Sensetive data is protected by 'ansible-vault'.
+Also in this README.md was added badge of passed tests.
