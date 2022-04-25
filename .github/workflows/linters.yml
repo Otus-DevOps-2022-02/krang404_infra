@@ -23,15 +23,15 @@ jobs:
         mv packer/variables.json.example packer/variables.json
         packer validate -var-file=packer/variables.json packer/app.json
         packer validate -var-file=packer/variables.json packer/db.json
-    - name: Run terraform validate
-      run: |
-        cd terraform/stage
-        mv terraform.tfvars.example terraform.tfvars
-        cd ../prod
-        mv terraform.tfvars.example terraform.tfvars
-        cd ../..
-        terraform -chdir=terraform/stage validate
-        terraform -chdir=terraform/prod validate
+    # - name: Run terraform validate
+    #   run: |
+    #     cd terraform/stage
+    #     mv terraform.tfvars.example terraform.tfvars
+    #     cd ../prod
+    #     mv terraform.tfvars.example terraform.tfvars
+    #     cd ../..
+    #     terraform -chdir=terraform/stage validate
+    #     terraform -chdir=terraform/prod validate
     - uses: terraform-linters/setup-tflint@v1
       name: Setup TFLint
       with:
