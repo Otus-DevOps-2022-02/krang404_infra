@@ -8,3 +8,11 @@ variables.tf.backup
 *.tf.backup
 *.retry
 ansible/roles/jdauphant.nginx/*
+# Vagrant & molecule
+.vagrant/
+*.log
+*.pyc
+.molecule
+.cache
+.pytest_cache
+ansible/venv/*

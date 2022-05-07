@@ -46,7 +46,7 @@ nginx_stream_params: []
 nginx_sites_default_root: /usr/share/nginx/html  # For this variable, a specific value for the OS can be apply in vars/{{ ansible_os_family }}.
 
 nginx_sites:
-  default:
+ default:
     - listen 80 default_server
     - server_name _
     - root "{{ nginx_sites_default_root }}"

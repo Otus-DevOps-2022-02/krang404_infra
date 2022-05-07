@@ -1,7 +1,9 @@
 galaxy_info:
-  author: your name
-  description: your role description
-  company: your company (optional)
+  role_name: db
+  namespace: nik
+  author: Nik
+  description: db
+  company: Nik
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
@@ -27,8 +29,8 @@ galaxy_info:
   # To view available platforms and versions (or releases), visit:
   # https://galaxy.ansible.com/api/v1/platforms/
   #
-  # platforms:
-  # - name: Fedora
+  platforms:
+   - name: Ubuntu
   #   versions:
   #   - all
   #   - 25

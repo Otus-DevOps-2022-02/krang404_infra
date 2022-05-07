@@ -128,3 +128,9 @@ Moreover in ansible config was including dinamic inventory module 'yc_compute'. 
 In this homework was creating roles for install MongoDB and application Monolith. Moreover was installing role with ansible-galaxy.
 In addition in this homework was writing playbook for create users in servers 'db' and 'app'. Sensetive data is protected by 'ansible-vault'.
 Also in this README.md was added badge of passed tests.
+
+################################
+# Home Work № 11
+################################
+
+In this homework was creating local environment for testing infrastructure: install Vagrant and Virtualbox, make Vagrantfile for provisioning VM`s with Ansible. Also was changing roles 'app' and 'db'. For locally testing was creating virtual environment in witch installed Ansible, Molecule and Testinfra. Test for Testinfra placed in 'roles/db/molecule/tests/test_default.py'. Renewal roles was added to provisioning scenarios for Packer.

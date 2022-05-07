@@ -5,5 +5,5 @@
   tags: app-tag
 
   roles:
-    - app
-    - jdauphant.nginx
+    - role: 'ansible/roles/app'
+    - role: 'ansible/roles/jdauphant.nginx'
